@@ -1,17 +1,17 @@
-import { type } from '@testing-library/user-event/dist/type';
 import React from 'react';
 import style from './Botao.module.scss';
 
-class Botao extends React.Component <{children?:React.ReactNode,type?:"button" | "submit" | "reset" | undefined}> {
-    render() {
-        const { type = "button"} = this.props;
+type Props ={//coloquei o nome de Props mas poderia ser qualquer nome
+    children: string,
+    type?: "button" | "submit" | "reset" | undefined
+  }
+
+class Botao extends React.Component <Props> {
+    render():React.ReactNode {
         return (
-            <button type={type} className={style.botao}>
-               {this.props.children}
-            </button>   
+            <button type={this.props.type} className={style.botao}> {this.props.children} </button>   
         )        
     }
 }
-
 
 export default Botao;
